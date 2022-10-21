@@ -5,10 +5,12 @@ var bio = document.getElementById('bio');
 var db = firebase.database();
 
 function send() {
-    db.ref(user.value).push({
+    db.ref(user.value).set({
         user: user.value,
         name: name1.value,
         mail: mail.value,
         bio: bio.value,
+    }).then(() => {
+        location.href = "./profile.html" + "?user=" + user.value;
     });
 }
